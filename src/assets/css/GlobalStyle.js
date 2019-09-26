@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-  body { background: #ddd; overflow-x: hidden; }
+  body { scroll-behavior: smooth; background: #ddd; overflow-x: hidden; }
   #menu { 
         background: #40739e;
         padding: 10px;
@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
         .navbar-expand-lg { flex-flow: column; } 
     }
 
-    .rodape { 
+    #rodape { 
         font-family: 'Montserrat', sans-serif;
         display: flex;
         align-items: center;
@@ -69,9 +69,25 @@ const GlobalStyle = createGlobalStyle`
                  outline: 0;
              }
          }
+
+        ul{
+            padding-left: 0px;
+            display: flex;
+            justify-content: center;
+         }
+
+         li{
+            font-size: 50px;
+            margin-left: 15px;
+            list-style: none;
+         }
+
+         .icons-redes-sociais a{
+             color: #fff;
+         }
         }
 
-        .rodape:after {
+        #rodape:after {
         background: linear-gradient(to right,#008ebc 25%,#0000FF 25%,#8cb916 25%,#88b61a 25%,#fbc300 57.2%,#f9bf00 71.5%,#bb3235 71.5%);  position: absolute;
         content: '';
         height: 4px;
@@ -79,6 +95,5 @@ const GlobalStyle = createGlobalStyle`
         left: 0;
         top: 0;
     }
-
 `
 export default GlobalStyle;

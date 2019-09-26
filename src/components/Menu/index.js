@@ -12,7 +12,7 @@ const Menu = () => (
       <Nav.Link href="#link">Programação</Nav.Link>
       <Nav.Link href="#link">Palestrantes</Nav.Link>
       <Nav.Link href="#link">Patrocinadores</Nav.Link>
-      <Nav.Link href="#link">Contato</Nav.Link>
+      <Nav.Link href="#rodape">Contato</Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
