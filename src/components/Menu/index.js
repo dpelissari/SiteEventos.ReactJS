@@ -3,7 +3,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import Logo from '../../../src/assets/img/logo.png';
 
 const Menu = () => (
-  <Navbar id="menu" expand="lg" sticky="top">
+  <Navbar id="menu" expand="lg" sticky="top" collapseOnSelect >
   <Navbar.Brand href="#home"><img src={Logo} alt="logo" /></Navbar.Brand>
   <Navbar.Toggle />
   <Navbar.Collapse>
@@ -18,3 +18,7 @@ const Menu = () => (
 </Navbar>
 )
 export default Menu;
+
+
+
+
