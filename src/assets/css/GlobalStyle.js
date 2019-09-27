@@ -5,7 +5,8 @@ const GlobalStyle = createGlobalStyle`
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-  body { scroll-behavior: smooth; background: #ddd; overflow-x: hidden; }
+  html{ scroll-behavior: smooth; }
+  body { background: #ddd; overflow-x: hidden; }
   #menu { 
         background: #40739e;
         padding: 10px;
