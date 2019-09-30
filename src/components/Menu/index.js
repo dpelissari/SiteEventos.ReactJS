@@ -8,7 +8,7 @@ const Menu = () => (
   <Navbar.Toggle />
   <Navbar.Collapse>
     <Nav className="mr-auto">
-      <Nav.Link href="#rodape">Home</Nav.Link>
+      <Nav.Link href="#home">Home</Nav.Link>
       <Nav.Link href="#rodape">Programação</Nav.Link>
       <Nav.Link href="#rodape">Palestrantes</Nav.Link>
       <Nav.Link href="#rodape">Patrocinadores</Nav.Link>

@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import bgSobre from '../img/bg-sobre.jpg';
+
 const GlobalStyle = createGlobalStyle`
 
 /* fonts  */
@@ -58,6 +60,11 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         color: #fff;
     }
+
+    .cont{
+        padding: 50px 0;
+    }
+    
 
     #rodape { 
         font-family: 'Montserrat', sans-serif;
@@ -124,19 +131,35 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Oswald', sans-serif;
         font-size: 50px;
         font-weight: bold;
+        text-shadow: 2px 2px 2px #000;
         margin: 0;
     }
 
     .caption-slider {
-         font-size: 35px;
+        font-family: 'Oswald', sans-serif;
+         font-size: 25px;
          margin: 0;
          line-height: 20px;
+    }
+
+    #sobre h1{ 
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 30px;
+        font-weight: 900;
+        margin: 20px 0;
+        color: #333;
+    }
+
+    #sobre p{
+        text-align: justify
     }
 
     /* mobile */
     @media only screen and (min-width: 230px) and (max-width: 767px){
         .titulo-slider{ font-size: 30px !important }
         .caption-slider{ font-size: 25px !important }
+        .cont{ padding: 10px 0; }
     }
 
 `

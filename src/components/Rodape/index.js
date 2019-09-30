@@ -2,6 +2,7 @@ import React from 'react';
 import Iframe from 'react-iframe'
 import { Container,Col, Row, Form, Button } from 'react-bootstrap';
 
+
 const Rodape = () => (
     <div id="rodape">
 
@@ -17,13 +18,13 @@ const Rodape = () => (
                     <h2>Redes sociais</h2>
                     <p>Acompanhe nosso trabalho pelas nossas redes sociais</p>
                     <ul className="icons-redes-sociais">
-                        <li><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-linkedin-square" aria-hidden="true"></i></li>
+                        <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                     </ul>
                 </Col>
-                <Col xs={12} md={4}>
+                <Col xs={12} md={4} className="mb-4">
                     <h2>Localização</h2>
                     <p>Centro de Cultura e Eventos Plínio Arlindo de Nes.</p>
                     <p>R. Assis Brasil, 20 D Centro, Chapecó - SC</p>
