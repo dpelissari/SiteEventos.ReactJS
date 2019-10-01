@@ -14,7 +14,15 @@
     <title>Expo Event 2020</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="text/javascript">
+      window.onscroll = function() {progressoRolagem()};
+      function progressoRolagem() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      }
+    </script>
     <div id="root"></div>
   </body>
 </html>

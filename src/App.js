@@ -6,6 +6,7 @@ import Menu from './components/Menu/index';
 import Slider from './components/Slider/index';
 import Sobre from './components/Sobre/index';
 import Rodape from './components/Rodape/index';
+import Programacao from './components/Programacao';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Menu />
       <Slider />
       <Sobre />
-    
+      <Programacao />
       <Rodape />
     </div>
   );

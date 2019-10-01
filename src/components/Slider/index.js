@@ -8,7 +8,7 @@ import sld03 from '../../assets/img/slider/3.jpg';
 
 const Slider = () => (
   <div id="home">
-    <Carousel Slide={true} controls={false} interval={3000}  indicators={true} wrap={true}>
+    <Carousel controls={false} interval={3000}  indicators={true} wrap={true}>
 
     <Carousel.Item>
       <img className="d-block w-100" src={sld01} alt="Imagem Evento"/>
