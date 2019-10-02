@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, ButtonToolbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default class Programacao extends React.Component {
 
@@ -34,7 +34,6 @@ export default class Programacao extends React.Component {
 
         this.setState({ infoProgramacao: infoProgramacao.pt, programacao: programacao.pt });
     };
-
 
     handleClick(dia) {
         const primeiroDia = document.getElementById("prog-primeiro-dia");
@@ -123,7 +122,6 @@ export default class Programacao extends React.Component {
                                             return (
                                                 <Row className="d-flex align-items-center item-palestra" key={i}>
                                                     {programacao[i].palestrantes.map(p =>
-
                                                         <Row className="d-flex align-items-center item-palestra" key={i}>
                                                             <Col md={2} xs={4} className="pl-0 pr-0 ">
                                                                 <img src={caminho + programacao[i].foto} className="foto-autor foto-redonda" alt={programacao[i].palestrantes} />
@@ -175,7 +173,6 @@ export default class Programacao extends React.Component {
                                             return (
                                                 <Row className="d-flex align-items-center item-palestra" key={i}>
                                                     {programacao[i].palestrantes.map(p =>
-
                                                         <Row className="d-flex align-items-center item-palestra" key={i}>
                                                             <Col md={2} xs={4} className="pl-0 pr-0 ">
                                                                 <img src={caminho + programacao[i].foto} className="foto-autor foto-redonda" alt={programacao[i].palestrantes} />
@@ -193,10 +190,24 @@ export default class Programacao extends React.Component {
                                     } else return false;
                                 })}
                             </div>
-                            
-                            <div className="text-center">
-                                <button className="btn btn-danger btn-circle btn-circle-xl m-1"><i class="fa fa-file-pdf-o"></i></button>
+
+                           <div className="text-center">
+
+                          
+                            <ButtonToolbar>
+                                <OverlayTrigger overlay={ <Tooltip>Baixar programação</Tooltip> }>
+                                    <a href="http://www.pdf995.com/samples/pdf.pdf" target="blank" className="btn btn-danger btn-circle btn-circle-xl m-1"><i className="fa fa-file-pdf-o"></i></a>
+                                </OverlayTrigger> 
+                            </ButtonToolbar>
+
                             </div>
+                            
+
+
+
+                    
+
+                            
 
                         </Col>
                     </Container>

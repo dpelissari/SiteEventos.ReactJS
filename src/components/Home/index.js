@@ -6,7 +6,7 @@ import sld01 from '../../assets/img/slider/1.jpg';
 import sld02 from '../../assets/img/slider/2.jpg';
 import sld03 from '../../assets/img/slider/3.jpg';
 
-const Slider = () => (
+const Home = () => (
   <div id="home">
     <Carousel controls={false} interval={3000}  indicators={true} wrap={true}>
 
@@ -36,4 +36,4 @@ const Slider = () => (
     </Carousel>
   </div>
 )
-export default Slider;
+export default Home;

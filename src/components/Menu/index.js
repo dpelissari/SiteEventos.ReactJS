@@ -11,7 +11,7 @@ const Menu = () => (
       <Nav.Link href="#home">Home</Nav.Link>
       <Nav.Link href="#sobre">Sobre</Nav.Link>
       <Nav.Link href="#programacao">Programação</Nav.Link>
-      <Nav.Link href="#rodape">Palestrantes</Nav.Link>
+      <Nav.Link href="#palestrantes">Palestrantes</Nav.Link>
       <Nav.Link href="#rodape">Patrocinadores</Nav.Link>
       <Nav.Link href="#form-contato">Contato</Nav.Link>
     </Nav>

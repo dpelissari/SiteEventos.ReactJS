@@ -206,7 +206,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .palestra-sem-palestrante{
-            margin-left: 3rem
+            margin-left: 1rem
         }
 
         .titulo-painel{ 
@@ -323,40 +323,130 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .btn-circle {
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  padding: 0;
-  border-radius: 50%;
-}
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        padding: 0;
+        border-radius: 50%;
+            i {
+                position: relative;
+                top: -1px;
+            }
+    }
 
-.btn-circle i {
-  position: relative;
-  top: -1px;
-}
+    .btn-circle-sm {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 0.9rem;
+    }
 
-.btn-circle-sm {
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
-  font-size: 0.9rem;
-}
+    .btn-circle-lg {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 1.1rem;
+    }
 
-.btn-circle-lg {
-  width: 55px;
-  height: 55px;
-  line-height: 55px;
-  font-size: 1.1rem;
-}
+    .btn-circle-xl {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 1.3rem;
+    }
 
-.btn-circle-xl {
-  width: 70px;
-  height: 70px;
-  line-height: 70px;
-  font-size: 1.3rem;
-}
+    .btn-toolbar{
+        justify-content: center;
+    }
 
+    #palestrantes{ 
+        background: #fff;
 
+        .card { 
+            background-color: transparent !important;
+            border: 0;
+         }
+
+         .palestrante-item {
+            margin-bottom: 1rem;
+         }
+
+        .foto-palestrante {
+            border-radius: 1rem;
+        }
+
+        .palestrante-info { 
+            position: absolute;
+            opacity: 0;
+            transition: visibility 0s 0.1s, opacity 0.1s linear;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-end;
+            display: flex;
+         }
+
+         .palestrante-info p{
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .palestrante-info:hover{
+            background: rgba(44, 62, 80, 0.90);
+            padding: 10px;
+            max-width: 100%;
+            height: 100%;
+            opacity: 1;
+            transition: opacity 0.1s linear;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+
+        .palestrante-item {
+            margin: 1rem 0 1rem 0;
+         }
+    }
+
+    .nome-palestrante {
+        font-size: 25px;
+        margin: 15px 0 0 0;
+        text-transform: uppercase;
+    }
+
+    .descricao-palestrante {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0.5rem 0 1rem 0;
+    }
+
+    .curriculo-palestrante {
+        text-align: justify;
+        font-size: 1.2rem;
+        color: #545b62;
+    }
+
+    .foto-palestrante-modal{ 
+        max-width: 30%;
+        border-radius: 50%;
+    }
+
+    .modal-header { 
+        border: none !important;
+        padding-bottom: 0 !important
+    }
+
+    .modal-body {
+        padding: 0 2rem 0 2rem !important;
+    }
+
+    .modal-footer {
+        border: none !important;
+    }
 `
 export default GlobalStyle;
