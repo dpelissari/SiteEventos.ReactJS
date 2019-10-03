@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Modal, ButtonToolbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default class Palestrantes extends React.Component {
     constructor(props) {
@@ -23,8 +23,8 @@ export default class Palestrantes extends React.Component {
         // informacoes dos palestrantes
         const infoPalestrante = {
             pt: [
-                { nome: "Lorem Ipsum1", descricaoCurta: "Gerente de negociação na empresa Lorem", cv: "Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hampden-Sydney College na Virginia, pesquisou uma das mais obscuras palavras em latim, consectetur, oriunda de uma passagem de Lorem Ipsum, e, procurando por entre citações da palavra na literatura clássica, descobriu a sua indubitável origem. Lorem Ipsum vem das seções 1.10.32 e 1.10.33 do de Finibus Bonorum et Malorum (Os Extremos do Bem e do Mal), de Cícero, escrito em 45 AC. Este livro é um tratado de teoria da ética muito popular na época da Renascença. A primeira linha de Lorem Ipsum, Lorem Ipsum dolor sit amet... vem de uma linha na seção 1.10.32.", foto: "avatar.jpg" },
-                { nome: "Lorem Ipsum2", descricaoCurta: "Gerente de negociação na empresa Lorem", cv: "O Lorem Ipsum é gerente de negociação na empresa Lorem.", foto: "avatar.jpg" },
+                { nome: "Palestrante da Silva", descricaoCurta: "DIRETOR DE AGRONEGÓCIO - DIVISÃO AGROINDÚSTRIA NA ENGINEERING DO BRASIL", cv: "Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hampden-Sydney College na Virginia, pesquisou uma das mais obscuras palavras em latim, consectetur, oriunda de uma passagem de Lorem Ipsum, e, procurando por entre citações da palavra na literatura clássica, descobriu a sua indubitável origem. Lorem Ipsum vem das seções 1.10.32 e 1.10.33 do de Finibus Bonorum et Malorum (Os Extremos do Bem e do Mal), de Cícero, escrito em 45 AC. Este livro é um tratado de teoria da ética muito popular na época da Renascença. A primeira linha de Lorem Ipsum, Lorem Ipsum dolor sit amet... vem de uma linha na seção 1.10.32.", foto: "avatar.jpg" },
+                { nome: "Palestrante de Souza", descricaoCurta: "Gerente de negociação na empresa Lorem", cv: "Existem muitas variações disponíveis de passagens de Lorem Ipsum, mas a maioria sofreu algum tipo de alteração, seja por inserção de passagens com humor, ou palavras aleatórias que não parecem nem um pouco convincentes. Se você pretende usar uma passagem de Lorem Ipsum, precisa ter certeza de que não há algo embaraçoso escrito escondido no meio do texto. Todos os geradores de Lorem Ipsum na internet tendem a repetir pedaços predefinidos conforme necessário, fazendo deste o primeiro gerador de Lorem Ipsum autêntico da internet. Ele usa um dicionário com mais de 200 palavras em Latim combinado com um punhado de modelos de estrutura de frases para gerar um Lorem Ipsum com aparência razoável, livre de repetições, inserções de humor, palavras não características, etc.", foto: "avatar.jpg" },
             ]
         }
 
@@ -85,11 +85,15 @@ export default class Palestrantes extends React.Component {
                         <p className="curriculo-palestrante">{this.state.cvPalestrante.cv}</p>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button color="primary" outline={true} className="btn btn-primary btn-block" onClick={this.toggle}>Voltar</Button>
-
+                        <div className="text-center">
+                            <ButtonToolbar>
+                                <OverlayTrigger overlay={ <Tooltip>Voltar ao site</Tooltip> }>
+                                    <a onClick={this.toggle} className="btn btn-primary btn-circle btn-circle-lg m-1"><i className="fa fa-undo"></i></a>
+                                </OverlayTrigger> 
+                            </ButtonToolbar>
+                        </div>        
                     </Modal.Footer>
                 </Modal>
-
             </div>
         )
     }

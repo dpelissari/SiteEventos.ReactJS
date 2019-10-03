@@ -192,23 +192,12 @@ export default class Programacao extends React.Component {
                             </div>
 
                            <div className="text-center">
-
-                          
-                            <ButtonToolbar>
-                                <OverlayTrigger overlay={ <Tooltip>Baixar programação</Tooltip> }>
-                                    <a href="http://www.pdf995.com/samples/pdf.pdf" target="blank" className="btn btn-danger btn-circle btn-circle-xl m-1"><i className="fa fa-file-pdf-o"></i></a>
-                                </OverlayTrigger> 
-                            </ButtonToolbar>
-
+                                <ButtonToolbar>
+                                    <OverlayTrigger overlay={ <Tooltip>Baixar programação</Tooltip> }>
+                                        <a href="http://www.pdf995.com/samples/pdf.pdf" target="blank" className="btn btn-danger btn-circle btn-circle-xl m-1"><i className="fa fa-file-pdf-o"></i></a>
+                                    </OverlayTrigger> 
+                                </ButtonToolbar>
                             </div>
-                            
-
-
-
-                    
-
-                            
-
                         </Col>
                     </Container>
                 </Row>

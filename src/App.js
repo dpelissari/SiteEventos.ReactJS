@@ -8,6 +8,7 @@ import Sobre from './components/Sobre/index';
 import Rodape from './components/Rodape/index';
 import Programacao from './components/Programacao/index';
 import Palestrantes from './components/Palestrantes/index';
+import Patrocinadores from './components/Patrocinadores/index';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Sobre />
       <Programacao />
       <Palestrantes />
+      <Patrocinadores />
       <Rodape />
     </div>
   );

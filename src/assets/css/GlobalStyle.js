@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         background: #ddd;
         overflow-x: hidden;
+        font-family: 'Oswald', sans-serif;
     }
  
     /* menu */
@@ -71,7 +72,7 @@ const GlobalStyle = createGlobalStyle`
         text-transform: uppercase;
         font-size: 30px;
         font-weight: 900;
-        margin: 20px 0;
+        margin: 5px 0;
         color: #333;
     }
 
@@ -84,7 +85,6 @@ const GlobalStyle = createGlobalStyle`
     #programacao{
         background: url(http://www.dairyvision.com.br/assets/img/schedule-bg-style.png) #fff bottom no-repeat;
         background-size: auto auto, cover;
-        font-family: 'Oswald', sans-serif;
 
         .aba-programacao{
             display: block;
@@ -225,7 +225,7 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         position: relative;
         bottom: 0;
-        background: #333;
+        background: url(http://www.agripoint.com.br/imagens/footer-bg.png) bottom no-repeat #333;
         color: #fff;
         padding: 40px 0;
         
@@ -295,7 +295,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #sobre{
-        font-family: 'Oswald',sans-serif;
         background: #008ebc;
         p{
             text-align: justify;
@@ -332,6 +331,7 @@ const GlobalStyle = createGlobalStyle`
             i {
                 position: relative;
                 top: -1px;
+                color: #fff;
             }
     }
 
@@ -398,7 +398,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .palestrante-info:hover{
-            background: rgba(44, 62, 80, 0.90);
+            background: rgba(51, 51, 51, 0.70);
             padding: 10px;
             max-width: 100%;
             height: 100%;
@@ -414,15 +414,16 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .nome-palestrante {
-        font-size: 25px;
+        font-size: 22px;
         margin: 15px 0 0 0;
         text-transform: uppercase;
+        font-weight: 700;
     }
 
     .descricao-palestrante {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 0.5rem 0 1rem 0;
+        font-size: 18px;
+        margin: 5px 0 5px 0;
+        color: #40739e
     }
 
     .curriculo-palestrante {
@@ -448,5 +449,73 @@ const GlobalStyle = createGlobalStyle`
     .modal-footer {
         border: none !important;
     }
+
+    
+    #patrocinadores {
+        
+        .patrocinadores{
+             padding: 0 0 2rem 0;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .cota { 
+            text-transform: uppercase;
+            font-size: 2rem;
+            text-align: center;
+            font-weight: 700;
+            margin: 50px 0 10px 0;
+        }
+
+        .subtitulo-secao { 
+            margin-bottom: 4rem;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .logo-patrocinio{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+
+            :hover {
+            box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.38);
+            transition: all .1s ease-in-out 0s;
+            border-radius: 10px;
+        }
+       
+
+        .realizadores { 
+            width: 95%;
+        }
+
+        .patrocinadores-ouro { 
+            width: 85%;
+        }
+
+        .patrocinadores-prata { 
+            width: 75%;
+        }
+
+        .patrocinadores-bronze{
+            width: 65%;
+        }
+
+        .patrocinadores-apoio{
+            width: 55%; 
+        }
+    }
+   
+   
+    
+    
+
+   
+   
+    
+    
+
 `
 export default GlobalStyle;
