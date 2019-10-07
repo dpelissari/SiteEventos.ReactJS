@@ -5,10 +5,11 @@ import GlobalStyle from './assets/css/GlobalStyle';
 import Menu from './components/Menu/index';
 import Home from './components/Home/index';
 import Sobre from './components/Sobre/index';
-import Rodape from './components/Rodape/index';
 import Programacao from './components/Programacao/index';
 import Palestrantes from './components/Palestrantes/index';
 import Patrocinadores from './components/Patrocinadores/index';
+import Inscricoes from './components/Inscricoes/index';
+import Rodape from './components/Rodape/index';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Programacao />
       <Palestrantes />
       <Patrocinadores />
+      <Inscricoes />
       <Rodape />
     </div>
   );

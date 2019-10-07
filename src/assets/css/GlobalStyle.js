@@ -226,6 +226,7 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
         bottom: 0;
         background: url(http://www.agripoint.com.br/imagens/footer-bg.png) bottom no-repeat #333;
+        background-size: cover;
         color: #fff;
         padding: 40px 0;
         
@@ -507,15 +508,89 @@ const GlobalStyle = createGlobalStyle`
             width: 55%; 
         }
     }
-   
-   
     
-    
+    }
 
-   
-   
+    #inscricoes{
+        background: url(http://www.dairyvision.com.br/assets/img/schedule-bg-style.png) #fff bottom no-repeat;
+        background-size: auto auto,cover;
+    }
+
+    .card{
+        margin: 2rem 0;
+        padding: 50px 30px;
+        border-radius: 5px;
+        border: 2px solid #ddd;
+        align-items: center;
+    }
+    .lote{ 
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-weight: 700;
+        text-align: center;
+    }
+    .vencimento-lote{ 
+        text-align: center;
+    }
     
-    
+    .evento{ 
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+     }
+
+    .btn-tipo-ingresso{ 
+        padding: 0.8rem 0;
+        margin-right: 0.5rem;
+        background: #333;
+        color: #fff !important;
+        width: 100%;
+            :hover{
+                background: #007bff;
+                transition: 0.5s;
+                cursor: pointer;
+            }
+
+            :active{
+                background: #f1c40f;
+            }
+     }
+
+
+
+    .btn-comprar{ 
+        padding: 0.8rem;
+        margin-right: 0.5rem;
+        width: 100%;
+        background: #ff4757;
+        color: #fff;
+            :hover{ 
+                background: #c0392b;
+                transition: 0.5s;
+            }
+    }
+
+
+    .valor-ingresso{ 
+        display: flex;
+        justify-content: space-around;
+            p{ 
+                margin: 0.5rem 0;
+                font-size: 1.8rem; font-weight: 700;
+            }
+            .rs{ 
+                font-size: 1rem;
+                color: #2196F3;
+                font-weight: bolder;
+            }
+    }
+
+    .tipo-ingresso{ 
+        display: flex;
+        justify-content: space-between;
+    }
 
 `
 export default GlobalStyle;
