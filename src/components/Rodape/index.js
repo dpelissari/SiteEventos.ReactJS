@@ -8,18 +8,23 @@ export default class Rodape extends React.Component {
     constructor(props) {
             super(props);
             this.state = {
-                fields: { nome: '', telefone: '', email: '', mensagem: '',},
+                fields: { feedback: '', name: '', fone: '', email: ''},
                 errors: {}
             }
             
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit.bind(this);;
         this.enviaFormContato = this.enviaFormContato.bind(this);
     }
 
     handleChange(e) {
         let fields = this.state.fields;
-        fields[e.target.name] = e.target.value;
+        fields[e.target.user_name] = e.target.value;
         this.setState({fields});
+    }
+
+    if (formIsValid){
+        this.enviaFormContato();
     }
 
     enviaFormContato(e) {
@@ -28,10 +33,12 @@ export default class Rodape extends React.Component {
             let fields = {};
 
             // limpa os campos do formulario
-            fields["nome"] = '';
-            fields["telefone"] = '';
-            fields["email"] = '';
-            fields["mensagem"] = '';
+            fields["user_name"] = '';
+            fields["user_fone"] = '';
+            fields["user_email"] = '';
+            fields["message"] = '';
+
+            
 
             this.setState({ fields: fields });
             alert("Form enviado");
@@ -43,52 +50,52 @@ export default class Rodape extends React.Component {
         let errors = {};
         let formIsValid = true;
 
-        if (!fields["nome"]) {
+        if (!fields["user_name"]) {
             formIsValid = false;
-            errors["nome"] = "*Por favor informe seu nome";
+            errors["user_name"] = "*Por favor informe seu nome";
         }
 
-        if (typeof fields["nome"] !== "undefined") {
-            if (!fields["nome"].match(/^[a-zA-Z ]*$/)) {
+        if (typeof fields["user_name"] !== "undefined") {
+            if (!fields["user_name"].match(/^[a-zA-Z ]*$/)) {
                 formIsValid = false;
-                errors["nome"] = "*Por favor informe um nome válido.";
+                errors["user_name"] = "*Por favor informe um nome válido.";
             }
         }
 
-        if (!fields["telefone"]) {
+        if (!fields["user_fone"]) {
             formIsValid = false;
-            errors["telefone"] = "*Por favor informe um numero para contato.";
+            errors["user_fone"] = "*Por favor informe um numero para contato.";
         }
 
-        if (typeof fields["telefone"] !== "undefined") {
-            if (!fields["telefone"].match(/^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$/)) {
+        if (typeof fields["user_fone"] !== "undefined") {
+            if (!fields["user_fone"].match(/^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$/)) {
                 formIsValid = false;
-                errors["telefone"] = "*Por favor informe um numero de contato válido";
+                errors["user_fone"] = "*Por favor informe um numero de contato válido";
             }
         }
 
-        if (!fields["email"]) {
+        if (!fields["user_email"]) {
             formIsValid = false;
-            errors["email"] = "*Por favor informe um e-mail.";
+            errors["user_email"] = "*Por favor informe um e-mail.";
         }
 
-        if (typeof fields["email"] !== "undefined") {
+        if (typeof fields["user_email"] !== "undefined") {
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
             if (!pattern.test(fields["email"])) {
                 formIsValid = false;
-                errors["email"] = "*Por favor informe um e-mail válido.";
+                errors["user_email"] = "*Por favor informe um e-mail válido.";
             }
         }
 
-        if (!fields["mensagem"]) {
+        if (!fields["message"]) {
             formIsValid = false;
-            errors["mensagem"] = "*O campo mensagem é obrigatório";
+            errors["message"] = "*O campo mensagem é obrigatório";
         }
 
-        if (typeof fields["mensagem"] !== "undefined") {
-            if (!fields["mensagem"].match(/^.{30,250}$/)) {
+        if (typeof fields["message"] !== "undefined") {
+            if (!fields["message"].match(/^.{30,250}$/)) {
                 formIsValid = false;
-                errors["mensagem"] = "*Sua mensagem deve conter no mínimo 30 caracteres.";
+                errors["message"] = "*Sua mensagem deve conter no mínimo 30 caracteres.";
             }
         }
 
@@ -96,6 +103,7 @@ export default class Rodape extends React.Component {
             errors: errors
         });
         return formIsValid;
+
 
     }
 
@@ -129,35 +137,37 @@ export default class Rodape extends React.Component {
                         <Col xs={12} md={4} id="form-contato">
                             <h2>Contato</h2>
 
-                            <Form className="form" method="post" onSubmit={this.enviaFormContato}>
+                            <Form id="contact-form" className="form" method="post" onSubmit={this.enviaFormContato} >
+                            <input type="hidden" name="contact_number" />
+                                
                                 <Form.Group controlId="nomeContato">
                                     <Form.Label>Nome</Form.Label>
-                                    <input className="form-control" type="text" name="nome" maxLength="150" id="nomeContato" placeholder="Nome" value={this.state.fields.nome} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.nome}</div>
+                                    <input className="form-control" type="text" name="user_name" maxLength="150" id="nomeContato" placeholder="Nome" value={this.state.fields.user_name} onChange={this.handleChange}/>
+                                    <div className="erro-form f-rubik">{this.state.errors.user_name}</div>
                                 </Form.Group>
 
                                 <Form.Group controlId="emailContato">
                                     <Form.Label>E-mail</Form.Label>
-                                    <input className="form-control" type="text" name="email" maxLength="150" id="emailContato" placeholder="Endereço de e-mail" value={this.state.fields.email} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.email}</div>
+                                    <input className="form-control" type="text" name="user_email" maxLength="150" id="emailContato" placeholder="Endereço de e-mail" value={this.state.fields.user_email} onChange={this.handleChange}/>
+                                    <div className="erro-form f-rubik">{this.state.errors.user_email}</div>
                                 </Form.Group>
 
                                 <Form.Group controlId="telefoneContato">
                                     <Form.Label>Telefone para contato</Form.Label>
-                                    <MaskedInput mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} className="form-control" name="telefone" id="foneContato" placeholder="Telefone para contato" value={this.state.fields.telefone} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.telefone}</div>
+                                    <MaskedInput mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} className="form-control" name="user_fone" id="foneContato" placeholder="Telefone para contato" value={this.state.fields.user_fone} onChange={this.handleChange}/>
+                                    <div className="erro-form f-rubik">{this.state.errors.user_fone}</div>
                                 </Form.Group>
 
                                 <Form.Group controlId="mensagemContato" >
                                     <Form.Label>Mensagem</Form.Label>
-                                    <input className="form-control" type="textarea" name="mensagem" id="mensagemContato" placeholder="Sua mensagem" maxLength="1000" rows='6' value={this.state.fields.mensagem} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.mensagem}</div>                                </Form.Group>
+                                        <input className="form-control" type="textarea" name="message" id="mensagemContato" placeholder="Sua mensagem" maxLength="1000" rows='6' value={this.state.fields.message} onChange={this.handleChange}/>
+                                        <div className="erro-form f-rubik">{this.state.errors.message}</div>  
+                                     </Form.Group>
 
-                                <Button className="btn btn-padrao" type="submit" block name="btnEnviar" value="Register">
+                                <Button className="btn btn-padrao" type="submit" block value="Send">
                                     Enviar mensagem
                                 </Button>
 
-                                <input type="text" name="validador" id="validador" value="@pessoa"></input>
                             </Form>
                         </Col>
                     </Row>
@@ -166,5 +176,25 @@ export default class Rodape extends React.Component {
             </div>
         )
     }
+
+    handleChange(event) {
+        this.setState({feedback: event.target.value})
+      }
+
+    handleSubmit() {
+        const templateId = 'template_id';
+        this.sendFeedback(templateId, {message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email})
+      }
+
+    sendFeedback (templateId, variables) {
+        window.emailjs.send(
+          'gmail', templateId,
+          variables
+          ).then(res => {
+            console.log('Email successfully sent!')
+          })
+          // Handle errors here however you like, or use a React error boundary
+          .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+      }
 
 }
