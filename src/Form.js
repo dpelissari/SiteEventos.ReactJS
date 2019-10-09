@@ -1,63 +1,84 @@
 import React from 'react';
-import { withFormik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
-const schema = Yup.object().shape({
-  nome: Yup.string()
-    .required('Informe o nome!')
-    .min(5, 'O nome deve conter mais de 5 letras!')
-    .max(100, 'O nome deve conter menos de 100 letras!'),
-  telefone: Yup.string().required('Informe um telefone para contato'),
-  email: Yup.string()
-    .required('Informe o email!')
-    .email('Informe um email válido!'),
-    mensagem: Yup.string().required('o campo mensagem é obrigatório!'),
-})
+class Formulario extends React.Component {
+    render() {
+        return (
+            <Formik
+                initialValues={{
+                    nome: '',
+                    email: '',
+                    fone: '',
+                    mensagem: '',
+                }}
+                validationSchema={Yup.object().shape({
+                    nome: Yup.string()
+                        .required('*O campo nome é obrigatório'),
+                 
+                    email: Yup.string()
+                        .email('*Ops: E-mail inválido')
+                        .required('*O campo e-mail é obrigatório'),
+                    fone: Yup.string()
+                        .required('*O campo telefone é obrigatório'),
+                        mensagem:  Yup.string()
+                        .required('*O campo mensagem é obrigatório')
+                })}
+                onSubmit={fields => {
+                    alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4));
+                    
+                  const formData = {
+                      service_id: 'contato_agripoint',
+                      template_id: 'template_ff3W3H2K',
+                      user_id: 'user_TSLzB8dCPqTfGxWMJXNIF',
+                  };
 
-const enhanceWithFormik = withFormik({
-  mapPropsToValues: () => ({ nome: '', telefone: '', email: '', mensagem: '' }),
-  handleSubmit: values => {
-    console.log(values)
-  },
-  isInitialValid: false,
-  validateOnChange: true,
-  validateOnBlur: true,
-  displayName: 'Formulário de contato',
-  validationSchema: schema
-})
+                  axios({
+                    method: 'post',
+                    url: 'https://api.emailjs.com/api/v1.0/email/send',
+                    data: formData
+                })
 
+                .then(function (response) {
+                  console.log(response);
+                })
+                .catch(function (response) {
+                    console.log(response);
+                });
 
- class Formulario extends React.Component {
-  constructor(props) {
-	super(props);
-  }
+                }}
+                render={({ errors, status, touched }) => (
+                    <Form>
+                        <div className="form-group">
+                            <label htmlFor="nome">First Name</label>
+                            <Field name="nome" type="text" className={'form-control' + (errors.nome && touched.nome ? ' is-invalid' : '')} />
+                            <ErrorMessage name="nome" component="div" className="invalid-feedback" />
+                        </div>
+                  
+                        <div className="form-group">
+                            <label htmlFor="email">E-mail</label>
+                            <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="fone">Telefone</label>
+                            <Field name="fone" type="text" className={'form-control' + (errors.fone && touched.fone ? ' is-invalid' : '')} />
+                            <ErrorMessage name="fone" component="div" className="invalid-feedback" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="mensagem">Mensagem</label>
+                            <Field name="mensagem" type="text" className={'form-control' + (errors.mensagem && touched.mensagem ? ' is-invalid' : '')} />
+                            <ErrorMessage name="mensagem" component="div" className="invalid-feedback" />
+                        </div>
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-padrao btn-block mr-2">Enviar</button>
+                        </div>
+                    </Form>
+                )}
+            />
+        )
+    }
+}
 
-  render() {
-	return (
-    <Form>
-      <div>
-        <Field name="nome" placeholder="Nome" className="form-control mb-2" />
-        <ErrorMessage name="nome" />
-      </div>
-
-      <div>
-        <Field name="email" placeholder="Email" className="form-control mb-2" />
-        <ErrorMessage name="email" />
-      </div>
-
-      <div>
-        <Field name="telefone" placeholder="Telefone" className="form-control mb-2" />
-        <ErrorMessage name="telefone" />
-      </div>
-
-      <div>
-        <Field name="mensagem" placeholder="Mensagem" className="form-control mb-2" />
-        <ErrorMessage name="mensagem" />
-      </div>
-      
-      <button type="submit" className="btn btn-padrao btn-block mt-2">Enviar</button>
-  </Form>
-	)
-  }
-
-}export default enhanceWithFormik(Formulario)
+export default Formulario ; 
