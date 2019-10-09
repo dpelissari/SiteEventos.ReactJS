@@ -61,6 +61,10 @@ const GlobalStyle = createGlobalStyle`
         background: #40739e;
         border: none;
         color: #fff;
+            :hover{
+                color: #fff;
+                opacity: 0.8;
+            }
     }
 
     .cont{
@@ -558,8 +562,6 @@ const GlobalStyle = createGlobalStyle`
             }
      }
 
-
-
     .btn-comprar{ 
         padding: 0.8rem;
         margin-right: 0.5rem;
@@ -590,6 +592,13 @@ const GlobalStyle = createGlobalStyle`
     .tipo-ingresso{ 
         display: flex;
         justify-content: space-between;
+    }
+
+    #form-contato{
+        .erro-validacao{
+            color: #ddd;
+            font-size: 15px;
+        }
     }
 
 `

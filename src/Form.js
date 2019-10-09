@@ -2,17 +2,21 @@ import React from "react";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import MaskedInput from 'react-text-mask';
 
 const schema = Yup.object().shape({
   nome: Yup.string()
-    .required("Informe o nome!")
-    .min(5, "O nome deve conter mais de 5 letras!")
-    .max(100, "O nome deve conter menos de 100 letras!"),
-  telefone: Yup.string().required("Informe um telefone para contato"),
+    .required("*O campo nome é obrigatório")
+    .min(3, "O nome deve conter ao menos 3 letras")
+    .max(100, "O nome deve conter menos de 100 letras"),
+  telefone: Yup.string().required("*O campo telefone é obrigatório"),
   email: Yup.string()
-    .required("Informe o email!")
-    .email("Informe um email válido!"),
-  mensagem: Yup.string().required("o campo mensagem é obrigatório!")
+    .required("*O campo e-mail é obrigatório")
+    .email("Ops: Informe um e-mail válido"),
+  mensagem: Yup.string()
+  .required("*O campo mensagem é obrigatório!")
+  .min(20, "Sua mensagem deve conter ao menos 20 caracteres")
+  .max(250, "Sua mensagem deve conter no máximo 250 caracteres")
 });
 
 const enhanceWithFormik = withFormik({
@@ -26,7 +30,7 @@ const enhanceWithFormik = withFormik({
     formData.append("telefone", values.telefone);
     formData.append("email", values.email);
     formData.append("mensagem", values.mensagem);
-    
+
     axios({
       method: "post",
       url: "https://api.emailjs.com/api/v1.0/email/send-form",
@@ -60,18 +64,20 @@ class Formulario extends React.Component {
     const {  values, handleChange, handleBlur, handleSubmit, errors } = this.props;
     
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="form-contato">
         <div>
+        <span className="erro-validacao">{errors.nome}</span>
           <input placeholder="Nome" className="form-control mb-2"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.nome}
             name="nome"
           />
-          <span>{errors.nome}</span>
+         
         </div>
 
         <div>
+          <span className="erro-validacao">{errors.email}</span>
           <input
             placeholder="Email"
             className="form-control mb-2"
@@ -80,36 +86,40 @@ class Formulario extends React.Component {
             value={values.email}
             name="email"
           />
-          <span>{errors.email}</span>
+         
         </div>
 
         <div>
-          <input
-            placeholder="Telefone"
-            className="form-control mb-2"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.telefone}
-            name="telefone"
+          <span className="erro-validacao">{errors.telefone}</span>
+          <MaskedInput 
+              mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} 
+              className="form-control"
+              placeholder="Telefone"
+              className="form-control mb-2"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.telefone}
+              name="telefone"
           />
-          <span>{errors.telefone}</span>
+
+         
         </div>
 
         <div>
-          <input
+          <span className="erro-validacao">{errors.mensagem}</span>
+          <textarea
             placeholder="Mensagem"
-            className="form-control mb-2"
+            className="form-control mb-3"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.mensagem}
             name="mensagem"
           />
-          <span>{errors.mensagem}</span>
+         
         </div>
 
-        <button type="submit" className="btn btn-padrao btn-block mt-2">
-          Enviar
-        </button>
+        <button type="submit" className="btn btn-padrao btn-block mt-2">Enviar</button>
+
       </form>
     );
   }
