@@ -1,5 +1,5 @@
 import React from "react";
-import { withFormik, Form, Field, ErrorMessage } from "formik";
+import { withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
@@ -20,19 +20,13 @@ const enhanceWithFormik = withFormik({
   handleSubmit: (values, { resetForm }) => {
     var formData = new FormData();
     formData.append("service_id", "contato_agripoint");
-    formData.append("template_id", "template_ff3W3H2K");
-    formData.append("user_id", "user_TSLzB8dCPqTfGxWMJXNIF");
-    formData.append("template_params", {
-      username: "James",
-      "g-recaptcha-response": "03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd..."
-    });
-
+    formData.append("template_id", "template_FP3Iyqpu");
+    formData.append("user_id", "user_cCk8IRoIdm9aX8Gg8We9O");
     formData.append("nome", values.nome);
     formData.append("telefone", values.telefone);
     formData.append("email", values.email);
     formData.append("mensagem", values.mensagem);
-
-    // faz o post na api
+    
     axios({
       method: "post",
       url: "https://api.emailjs.com/api/v1.0/email/send-form",
@@ -40,7 +34,7 @@ const enhanceWithFormik = withFormik({
       config: { headers: { "Content-Type": "multipart/form-data" } }
     })
       .then(function(response) {
-        console.log(response);
+        console.log(response.data);
         alert("Form enviado");
 
         // limpa os campos do formulario
@@ -63,45 +57,60 @@ class Formulario extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {  values, handleChange, handleBlur, handleSubmit, errors } = this.props;
+    
     return (
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
-          <Field name="nome" placeholder="Nome" className="form-control mb-2" />
-          <ErrorMessage name="nome" />
+          <input placeholder="Nome" className="form-control mb-2"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.nome}
+            name="nome"
+          />
+          <span>{errors.nome}</span>
         </div>
 
         <div>
-          <Field
-            name="email"
+          <input
             placeholder="Email"
             className="form-control mb-2"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            name="email"
           />
-          <ErrorMessage name="email" />
+          <span>{errors.email}</span>
         </div>
 
         <div>
-          <Field
-            name="telefone"
+          <input
             placeholder="Telefone"
             className="form-control mb-2"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.telefone}
+            name="telefone"
           />
-          <ErrorMessage name="telefone" />
+          <span>{errors.telefone}</span>
         </div>
 
         <div>
-          <Field
-            name="mensagem"
+          <input
             placeholder="Mensagem"
             className="form-control mb-2"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.mensagem}
+            name="mensagem"
           />
-          <ErrorMessage name="mensagem" />
+          <span>{errors.mensagem}</span>
         </div>
 
         <button type="submit" className="btn btn-padrao btn-block mt-2">
           Enviar
         </button>
-      </Form>
+      </form>
     );
   }
 }
