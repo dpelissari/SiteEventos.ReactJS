@@ -1,49 +1,63 @@
 import React from 'react';
+import { withFormik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
-export default class Formulario extends React.Component {
+const schema = Yup.object().shape({
+  nome: Yup.string()
+    .required('Informe o nome!')
+    .min(5, 'O nome deve conter mais de 5 letras!')
+    .max(100, 'O nome deve conter menos de 100 letras!'),
+  telefone: Yup.string().required('Informe um telefone para contato'),
+  email: Yup.string()
+    .required('Informe o email!')
+    .email('Informe um email válido!'),
+    mensagem: Yup.string().required('o campo mensagem é obrigatório!'),
+})
+
+const enhanceWithFormik = withFormik({
+  mapPropsToValues: () => ({ nome: '', telefone: '', email: '', mensagem: '' }),
+  handleSubmit: values => {
+    console.log(values)
+  },
+  isInitialValid: false,
+  validateOnChange: true,
+  validateOnBlur: true,
+  displayName: 'Formulário de contato',
+  validationSchema: schema
+})
+
+
+ class Formulario extends React.Component {
   constructor(props) {
 	super(props);
-	this.state = { feedback: '', name: '', fone: '', email: ''};
-	this.handleChange = this.handleChange.bind(this);
-	this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
 	return (
-        <form id="contact-form">
-        <input type="hidden" name="contact_number" />
-        <label>Name</label>
-        <input type="text" name="user_name" />
-        <label>Email</label>
-        <input type="email" name="user_email" />
-        <label>Email</label>
-        <input type="email" name="user_fone" />
-        <label>Message</label>
-        <textarea name="message"></textarea>
-        <input type="submit" value="Send" />
-    </form>
+    <Form>
+      <div>
+        <Field name="nome" placeholder="Nome" className="form-control mb-2" />
+        <ErrorMessage name="nome" />
+      </div>
+
+      <div>
+        <Field name="email" placeholder="Email" className="form-control mb-2" />
+        <ErrorMessage name="email" />
+      </div>
+
+      <div>
+        <Field name="telefone" placeholder="Telefone" className="form-control mb-2" />
+        <ErrorMessage name="telefone" />
+      </div>
+
+      <div>
+        <Field name="mensagem" placeholder="Mensagem" className="form-control mb-2" />
+        <ErrorMessage name="mensagem" />
+      </div>
+      
+      <button type="submit" className="btn btn-padrao btn-block mt-2">Enviar</button>
+  </Form>
 	)
   }
 
-  handleChange(event) {
-    this.setState({feedback: event.target.value})
-  }
-
-  handleSubmit() {
-    const templateId = 'template_id';
-	this.sendFeedback(templateId, {message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email})
-  }
-
-
-  sendFeedback (templateId, variables) {
-	window.emailjs.send(
-  	'gmail', templateId,
-  	variables
-  	).then(res => {
-    	console.log('Email successfully sent!')
-  	})
-  	// Handle errors here however you like, or use a React error boundary
-  	.catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
-  }
-
-}
+}export default enhanceWithFormik(Formulario)

@@ -1,7 +1,9 @@
 import React from 'react';
 import Iframe from 'react-iframe'
 import { Container, Col, Row, Form, Button } from 'react-bootstrap';
-import MaskedInput from 'react-text-mask'
+//import MaskedInput from 'react-text-mask';
+import axios from 'axios';
+import Formulario from '../../Form';
 
 export default class Rodape extends React.Component {
 
@@ -11,100 +13,48 @@ export default class Rodape extends React.Component {
                 fields: { feedback: '', name: '', fone: '', email: ''},
                 errors: {}
             }
-            
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit.bind(this);;
         this.enviaFormContato = this.enviaFormContato.bind(this);
     }
-
-    handleChange(e) {
-        let fields = this.state.fields;
-        fields[e.target.user_name] = e.target.value;
-        this.setState({fields});
-    }
-
-    if (formIsValid){
-        this.enviaFormContato();
-    }
-
-    enviaFormContato(e) {
+    
+        enviaFormContato(e) {
         e.preventDefault();
         if (this.validaForm()) {
+
             let fields = {};
 
             // limpa os campos do formulario
-            fields["user_name"] = '';
-            fields["user_fone"] = '';
-            fields["user_email"] = '';
-            fields["message"] = '';
-
-            
+            fields["nome"] = '';
+            fields["telefone"] = '';
+            fields["email"] = '';
+            fields["mensagem"] = '';
 
             this.setState({ fields: fields });
             alert("Form enviado");
+
+            // dados que serao enviados para api
+            const data = {
+                service_id: 'contato_agripoint',
+                template_id: 'template_ff3W3H2K',
+                user_id: 'user_TSLzB8dCPqTfGxWMJXNIF',
+                template_params: {
+                    'username': 'James'
+                }
+            };
+      
+            // faz o post na api
+            axios({
+                method: 'post',
+                url: 'https://api.emailjs.com/api/v1.0/email/send',
+                data: data,
+                config: { headers: { 'Content-Type': 'multipart/form-data' } }
+            })
+            .then(function (response) {
+            console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
         }
-    }
-
-    validaForm() {
-        let fields = this.state.fields;
-        let errors = {};
-        let formIsValid = true;
-
-        if (!fields["user_name"]) {
-            formIsValid = false;
-            errors["user_name"] = "*Por favor informe seu nome";
-        }
-
-        if (typeof fields["user_name"] !== "undefined") {
-            if (!fields["user_name"].match(/^[a-zA-Z ]*$/)) {
-                formIsValid = false;
-                errors["user_name"] = "*Por favor informe um nome válido.";
-            }
-        }
-
-        if (!fields["user_fone"]) {
-            formIsValid = false;
-            errors["user_fone"] = "*Por favor informe um numero para contato.";
-        }
-
-        if (typeof fields["user_fone"] !== "undefined") {
-            if (!fields["user_fone"].match(/^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$/)) {
-                formIsValid = false;
-                errors["user_fone"] = "*Por favor informe um numero de contato válido";
-            }
-        }
-
-        if (!fields["user_email"]) {
-            formIsValid = false;
-            errors["user_email"] = "*Por favor informe um e-mail.";
-        }
-
-        if (typeof fields["user_email"] !== "undefined") {
-            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if (!pattern.test(fields["email"])) {
-                formIsValid = false;
-                errors["user_email"] = "*Por favor informe um e-mail válido.";
-            }
-        }
-
-        if (!fields["message"]) {
-            formIsValid = false;
-            errors["message"] = "*O campo mensagem é obrigatório";
-        }
-
-        if (typeof fields["message"] !== "undefined") {
-            if (!fields["message"].match(/^.{30,250}$/)) {
-                formIsValid = false;
-                errors["message"] = "*Sua mensagem deve conter no mínimo 30 caracteres.";
-            }
-        }
-
-        this.setState({
-            errors: errors
-        });
-        return formIsValid;
-
-
     }
 
 
@@ -137,38 +87,10 @@ export default class Rodape extends React.Component {
                         <Col xs={12} md={4} id="form-contato">
                             <h2>Contato</h2>
 
-                            <Form id="contact-form" className="form" method="post" onSubmit={this.enviaFormContato} >
-                            <input type="hidden" name="contact_number" />
-                                
-                                <Form.Group controlId="nomeContato">
-                                    <Form.Label>Nome</Form.Label>
-                                    <input className="form-control" type="text" name="user_name" maxLength="150" id="nomeContato" placeholder="Nome" value={this.state.fields.user_name} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.user_name}</div>
-                                </Form.Group>
+                            <Formulario />
 
-                                <Form.Group controlId="emailContato">
-                                    <Form.Label>E-mail</Form.Label>
-                                    <input className="form-control" type="text" name="user_email" maxLength="150" id="emailContato" placeholder="Endereço de e-mail" value={this.state.fields.user_email} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.user_email}</div>
-                                </Form.Group>
+                           
 
-                                <Form.Group controlId="telefoneContato">
-                                    <Form.Label>Telefone para contato</Form.Label>
-                                    <MaskedInput mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} className="form-control" name="user_fone" id="foneContato" placeholder="Telefone para contato" value={this.state.fields.user_fone} onChange={this.handleChange}/>
-                                    <div className="erro-form f-rubik">{this.state.errors.user_fone}</div>
-                                </Form.Group>
-
-                                <Form.Group controlId="mensagemContato" >
-                                    <Form.Label>Mensagem</Form.Label>
-                                        <input className="form-control" type="textarea" name="message" id="mensagemContato" placeholder="Sua mensagem" maxLength="1000" rows='6' value={this.state.fields.message} onChange={this.handleChange}/>
-                                        <div className="erro-form f-rubik">{this.state.errors.message}</div>  
-                                     </Form.Group>
-
-                                <Button className="btn btn-padrao" type="submit" block value="Send">
-                                    Enviar mensagem
-                                </Button>
-
-                            </Form>
                         </Col>
                     </Row>
                 </Container>
@@ -176,25 +98,4 @@ export default class Rodape extends React.Component {
             </div>
         )
     }
-
-    handleChange(event) {
-        this.setState({feedback: event.target.value})
-      }
-
-    handleSubmit() {
-        const templateId = 'template_id';
-        this.sendFeedback(templateId, {message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email})
-      }
-
-    sendFeedback (templateId, variables) {
-        window.emailjs.send(
-          'gmail', templateId,
-          variables
-          ).then(res => {
-            console.log('Email successfully sent!')
-          })
-          // Handle errors here however you like, or use a React error boundary
-          .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
-      }
-
 }
