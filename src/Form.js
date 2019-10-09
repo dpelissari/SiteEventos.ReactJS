@@ -3,18 +3,19 @@ import { withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import MaskedInput from 'react-text-mask';
+import Swal from 'sweetalert2'
 
 const schema = Yup.object().shape({
   nome: Yup.string()
-    .required("*O campo nome é obrigatório")
+    .required("* O campo nome é obrigatório")
     .min(3, "O nome deve conter ao menos 3 letras")
     .max(100, "O nome deve conter menos de 100 letras"),
-  telefone: Yup.string().required("*O campo telefone é obrigatório"),
+  telefone: Yup.string().required("* O campo telefone é obrigatório"),
   email: Yup.string()
-    .required("*O campo e-mail é obrigatório")
+    .required("* O campo e-mail é obrigatório")
     .email("Ops: Informe um e-mail válido"),
   mensagem: Yup.string()
-  .required("*O campo mensagem é obrigatório!")
+  .required("* O campo mensagem é obrigatório!")
   .min(20, "Sua mensagem deve conter ao menos 20 caracteres")
   .max(250, "Sua mensagem deve conter no máximo 250 caracteres")
 });
@@ -38,11 +39,15 @@ const enhanceWithFormik = withFormik({
       config: { headers: { "Content-Type": "multipart/form-data" } }
     })
       .then(function(response) {
-        console.log(response.data);
-        alert("Form enviado");
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Sua mensagem foi enviada!',
+          showConfirmButton: false,
+          timer: 1500
+        })
 
-        // limpa os campos do formulario
-        resetForm(); // não sei se funciona em qualquer versão
+        resetForm(); 
       })
       .catch(function(response) {
         console.log(response);
