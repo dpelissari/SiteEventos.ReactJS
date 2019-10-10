@@ -232,7 +232,7 @@ const GlobalStyle = createGlobalStyle`
         background: url(http://www.agripoint.com.br/imagens/footer-bg.png) bottom no-repeat #333;
         background-size: cover;
         color: #fff;
-        padding: 40px 0;
+        padding: 50px 0;
         
             h2 {
                 text-align: center;
@@ -268,15 +268,7 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-    #rodape:after {
-        background: linear-gradient(to right,#008ebc 25%,#0000FF 25%,#8cb916 25%,#88b61a 25%,#fbc300 57.2%,#f9bf00 71.5%,#bb3235 71.5%);
-        position: absolute;
-        content: '';
-        height: 4px;
-        right: 0;
-        left: 0;
-        top: 0;
-    }
+   
 
     /* slider  */
     .carousel-caption { 
@@ -598,6 +590,11 @@ const GlobalStyle = createGlobalStyle`
             color: #ddd;
             font-size: 15px;
         }
+    }
+
+    .react-multi-carousel-list {
+        border-top: 4px solid #333;
+   
     }
 `
 export default GlobalStyle;

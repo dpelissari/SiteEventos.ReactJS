@@ -10,6 +10,7 @@ import Palestrantes from './components/Palestrantes/index';
 import Patrocinadores from './components/Patrocinadores/index';
 import Inscricoes from './components/Inscricoes/index';
 import Rodape from './components/Rodape/index';
+import GaleriaFotos from './components/GaleriaFotos';
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
       <Palestrantes />
       <Patrocinadores />
       <Inscricoes />
+      <GaleriaFotos />
       <Rodape />
+      
     </div>
   );
 }
