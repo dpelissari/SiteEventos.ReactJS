@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Modal, ButtonToolbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container, Row, Col, Card, Modal, ButtonToolbar, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 
 export default class Palestrantes extends React.Component {
     constructor(props) {
@@ -77,7 +77,6 @@ export default class Palestrantes extends React.Component {
 
                 <Modal show={this.state.modal} onHide={this.toggle} centered size="lg" unmountOnClose={true} className={this.props.className} >
                     <Modal.Header closeButton />
-
                     <Modal.Body className="text-center">
                         <img className="foto-palestrante-modal" src={caminho + cvPalestrante.foto} alt={this.state.cvPalestrante.nome} />
                         <h1 className="nome-palestrante">{this.state.cvPalestrante.nome}</h1>
@@ -88,7 +87,7 @@ export default class Palestrantes extends React.Component {
                         <div className="text-center">
                             <ButtonToolbar>
                                 <OverlayTrigger overlay={ <Tooltip>Voltar ao site</Tooltip> }>
-                                    <a onClick={this.toggle} className="btn btn-primary btn-circle btn-circle-lg m-1"><i className="fa fa-undo"></i></a>
+                                    <Button onClick={this.toggle} className="btn btn-primary btn-circle btn-circle-lg m-1"><i className="fa fa-undo"></i></Button>
                                 </OverlayTrigger> 
                             </ButtonToolbar>
                         </div>        

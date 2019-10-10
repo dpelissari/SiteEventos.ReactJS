@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Container, Card, Button,} from 'react-bootstrap';
+import {Row, Col, Container, Card } from 'react-bootstrap';
 
 
 export default class Inscricoes extends React.Component{

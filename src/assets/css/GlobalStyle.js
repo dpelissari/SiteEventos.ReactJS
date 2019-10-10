@@ -465,7 +465,7 @@ const GlobalStyle = createGlobalStyle`
             display: flex;
             justify-content: center;
         }
-
+        
         .cota { 
             text-transform: uppercase;
             font-size: 2rem;
@@ -574,7 +574,6 @@ const GlobalStyle = createGlobalStyle`
             }
     }
 
-
     .valor-ingresso{ 
         display: flex;
         justify-content: space-around;
@@ -600,6 +599,5 @@ const GlobalStyle = createGlobalStyle`
             font-size: 15px;
         }
     }
-
 `
 export default GlobalStyle;

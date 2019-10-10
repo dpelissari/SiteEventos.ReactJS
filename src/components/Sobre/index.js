@@ -1,5 +1,5 @@
 import React from 'react';
-import Iframe from 'react-iframe'
+
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Sobre = () => (
@@ -8,7 +8,7 @@ const Sobre = () => (
         <Container>
             <Row>
                 <Col lg={6} xs={12}>
-                    <Iframe url="https://www.youtube.com/embed/-rAeqN-Q7x4" className="mt-4" width="100%" height="350" id="myId" display="initial" position="relative" />
+                    <iframe width="100%" height="350" src="https://www.youtube.com/embed/-rAeqN-Q7x4" title="About Event"></iframe>
                 </Col>
                 <Col lg={6} xs={12}>
                     <h1 className="titulo-secao">Expo Event 2020</h1>

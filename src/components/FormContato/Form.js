@@ -61,9 +61,6 @@ const enhanceWithFormik = withFormik({
 });
 
 class Formulario extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {  values, handleChange, handleBlur, handleSubmit, errors } = this.props;
@@ -71,56 +68,22 @@ class Formulario extends React.Component {
     return (
       <form onSubmit={handleSubmit} id="form-contato">
         <div>
-        <span className="erro-validacao">{errors.nome}</span>
-          <input placeholder="Nome" className="form-control mb-2"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.nome}
-            name="nome"
-          />
-         
+          <span className="erro-validacao">{errors.nome}</span>
+          <input placeholder="Nome" className="form-control mb-2" onChange={handleChange} onBlur={handleBlur} value={values.nome} name="nome" />
         </div>
-
         <div>
           <span className="erro-validacao">{errors.email}</span>
-          <input
-            placeholder="Email"
-            className="form-control mb-2"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            name="email"
-          />
-         
+          <input placeholder="Email" className="form-control mb-2" onChange={handleChange} onBlur={handleBlur} value={values.email} name="email" />
         </div>
 
         <div>
           <span className="erro-validacao">{errors.telefone}</span>
-          <MaskedInput 
-              mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} 
-              className="form-control"
-              placeholder="Telefone"
-              className="form-control mb-2"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.telefone}
-              name="telefone"
-          />
-
-         
+          <MaskedInput mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}  placeholder="Telefone" className="form-control mb-2" onChange={handleChange} onBlur={handleBlur} value={values.telefone} name="telefone" />
         </div>
 
         <div>
           <span className="erro-validacao">{errors.mensagem}</span>
-          <textarea
-            placeholder="Mensagem"
-            className="form-control mb-3"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.mensagem}
-            name="mensagem"
-          />
-         
+          <textarea placeholder="Mensagem" className="form-control mb-3" onChange={handleChange} onBlur={handleBlur} value={values.mensagem} name="mensagem" />
         </div>
 
         <button type="submit" className="btn btn-padrao btn-block mt-2">Enviar</button>
