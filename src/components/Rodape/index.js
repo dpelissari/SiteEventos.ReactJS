@@ -1,96 +1,35 @@
 import React from 'react';
-import Iframe from 'react-iframe'
-import { Container, Col, Row, Form, Button } from 'react-bootstrap';
-//import MaskedInput from 'react-text-mask';
-import axios from 'axios';
-import Formulario from '../../Form';
+import { Container, Col, Row} from 'react-bootstrap';
+import Formulario from '../FormContato/index';
 
 export default class Rodape extends React.Component {
-
-    constructor(props) {
-            super(props);
-            this.state = {
-                fields: { feedback: '', name: '', fone: '', email: ''},
-                errors: {}
-            }
-        this.enviaFormContato = this.enviaFormContato.bind(this);
-    }
-    
-        enviaFormContato(e) {
-        e.preventDefault();
-        if (this.validaForm()) {
-
-            let fields = {};
-
-            // limpa os campos do formulario
-            fields["nome"] = '';
-            fields["telefone"] = '';
-            fields["email"] = '';
-            fields["mensagem"] = '';
-
-            this.setState({ fields: fields });
-            alert("Form enviado");
-
-            // dados que serao enviados para api
-            const data = {
-                service_id: 'contato_agripoint',
-                template_id: 'template_ff3W3H2K',
-                user_id: 'user_TSLzB8dCPqTfGxWMJXNIF',
-                template_params: {
-                    'username': 'James'
-                }
-            };
-      
-            // faz o post na api
-            axios({
-                method: 'post',
-                url: 'https://api.emailjs.com/api/v1.0/email/send',
-                data: data,
-                config: { headers: { 'Content-Type': 'multipart/form-data' } }
-            })
-            .then(function (response) {
-            console.log(response);
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
-        }
-    }
-
-
     render() {
         return (
             <div id="rodape">
                 <Container>
                     <Row>
-                        <Col xs={12} md={12}>
-                            <Iframe url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7312.960307846048!2d-46.66240172251435!3d-23.587106906191863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59f1a91c26a3%3A0x5fd57fbcb6222e5a!2sParque%20Ibirapuera%20-%20Vila%20Mariana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1569524080759!5m2!1spt-BR!2sbr" width="100%" height="auto" display="initial" position="relative" />
-                        </Col>
-                    </Row>
-                    <Row>
                         <Col xs={12} md={4}>
                             <h2>Redes sociais</h2>
-                            <p>Acompanhe nosso trabalho pelas nossas redes sociais</p>
+                            <p>Acompanhe nosso trabalho pelas redes sociais</p>
                             <ul className="icons-redes-sociais">
-                                <li><i className="fa fa-facebook-official" aria-hidden="true"></i></li>
-                                <li><i className="fa fa-twitter-square" aria-hidden="true"></i></li>
-                                <li><i className="fa fa-instagram" aria-hidden="true"></i></li>
-                                <li><i className="fa fa-linkedin-square" aria-hidden="true"></i></li>
+                                <li><a href="https://www.facebook.com/dkalebe" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                                <li><a href="https://twitter.com/DanielPelissar" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/danielkalebe/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/daniel-pelissari-ba8082145/" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </Col>
                         <Col xs={12} md={4} className="mb-4">
-                            <h2>Localização</h2>
-                            <p>Centro de Cultura e Eventos Plínio Arlindo de Nes.</p>
-                            <p>R. Assis Brasil, 20 D Centro, Chapecó - SC</p>
-                            <p>Fone para contato: (19) 3432-2199</p>
+                            <h2>Local</h2>
+                            <p className="mb-1">Centro de Cultura e Eventos Plínio Arlindo de Nes</p>
+                            <p className="mb-1">R. Assis Brasil, 20 D Centro, Chapecó - SC.</p>
+                            <p className="mt-2 text-center">Para mais informações: </p>
+                            <p className="mb-1 mt-1 text-center"><i className="fa fa-phone" aria-hidden="true"></i> (19) 3434-3232 | <i className="fa fa-phone" aria-hidden="true"></i> (19) 9.9999-8888 </p>
+                            <p className="mb-1 mt-1 text-center"><i className="fa fa-envelope" aria-hidden="true"></i><a href="mailto:eventos@email.com.br?subject=Contato ExpoEvent 2020"> eventos@email.com.br</a></p>
+                            <p className="mb-1"></p>
                         </Col>
                         <Col xs={12} md={4} id="form-contato">
                             <h2>Contato</h2>
-
                             <Formulario />
-
-                           
-
                         </Col>
                     </Row>
                 </Container>
@@ -98,4 +37,4 @@ export default class Rodape extends React.Component {
             </div>
         )
     }
-}
+};

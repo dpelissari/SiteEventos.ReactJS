@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="utf-8" />
-    <meta name="keywords" content="expo, event, 2020, shows" />
-    <meta property="og:url" content="http://www.expoevent.com.br" />
-    <meta property="og:description" content="Expo Event | O maior evento para gestão de SPA´s contruidas em React" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <title>Expo Event 2020</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6482651-18"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-6482651-18');
+    </script>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <title>ExpoEvent 2020</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta property="og:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry | 13 e 14 de maio de 2020 - Chapecó -SC" />
+    <meta name="description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry | 13 e 14 de maio de 2020 - Chapecó -SC" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="expo, event, 2020, tecnologia, react, web, javascript " />
+    <meta property="og:url" content="http://www.url.com.br" />
+    <meta name="theme-color" content="#000000" />
+    <!-- twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Iterleite">
+    <meta name="twitter:creator" content="@AgriPoint">
+    <meta name="twitter:title" content="ExpoEvent 2020 | 13 e 14 de maio">
+    <meta name="twitter:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry | 13 e 14 de maio de 2020 - Chapecó -SC">
+    <meta name="twitter:image" content="sua_url_imagem_compartilhamento">
+    <!-- facebook -->
+    <meta property="og:url" content="http://www.url.com.br" />
+    <meta property="og:title" content="ExpoEvent 2020, Chapecó -SC | 13 e 14 de maio" />
+    <meta property="og:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry | 13 e 14 de maio de 2020 - Chapecó -SC" />
+    <meta property="og:site_name" content="Expo Event 2020" />
+    <meta property="og:image" content="sua_url_imagem_compartilhamento" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <style>
+      body{ overflow-x: hidden;}
+      .svgLoader { animation: spin 0.5s linear infinite; margin: auto; }
+      .divLoader { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; z-index: 9999; }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
     <script type="text/javascript">
@@ -23,8 +57,13 @@
         var scrolled = (winScroll / height) * 100;
         document.getElementById("progress-bar").style.width = scrolled + "%";
       }
-
     </script>
-    <div id="root"></div>
+    <div id="root">
+      <div class="divLoader">
+        <svg class="svgLoader" viewBox="0 0 100 100" width="10em" height="10em">
+          <path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#51CACC" transform="rotate(179.719 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path>
+        </svg>
+      </div>
+    </div>
   </body>
 </html>

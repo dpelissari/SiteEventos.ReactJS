@@ -1,0 +1,41 @@
+1º LOTE
+ESTUDANTE
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1358&quantidade=1
+
+PROFISSIONAL
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1359&quantidade=1
+
+ESTUDANTE + ALMOÇO
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1371&quantidade=1
+
+PROFISSIONAL + ALMOÇO
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1372&quantidade=1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+2º LOTE
+ESTUDANTE
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1360&quantidade=1
+
+PROFISSIONAL
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1361&quantidade=1
+
+ESTUDANTE + ALMOÇO
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1373&quantidade=1
+
+PROFISSIONAL + ALMOÇO
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1374&quantidade=1
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3º LOTE
+ESTUDANTE
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1362&quantidade=1
+
+PROFISSIONAL
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1363&quantidade=1" className="btn btn-tipo-ingresso disabled" target="blank
+
+ESTUDANTE + ALMOÇO
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1375&quantidade=1
+
+PROFISSIONAL + ALMOÇO
+https://www.agripoint.com.br/vendas/pedRecebe.aspx?nomeLoja=MilkPoint&urlOrigem=http://www.interleite.com.br/&urlLogotipo=https://www.agripoint.com.br/logos/milk.jpg&naoMostrarCesta=0&produto1=1850&tipo1=1376&quantidade=1
+
