@@ -1,9 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import bgSobre from '../img/bg-sobre.png';
+import bgPalestrantes from '../img/bg-palestrantes.png';
+import bgProgramacao from '../img/schedule-bg-style.png';
+import bgRodape from '../img/footer-bg.png';
 
 const GlobalStyle = createGlobalStyle`
 
-/* fonts  */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
   
@@ -16,13 +19,21 @@ const GlobalStyle = createGlobalStyle`
         overflow-x: hidden;
         font-family: 'Oswald', sans-serif;
     }
- 
-    /* menu */
+
+    .react-multiple-carousel__arrow{
+        z-index: 998 !important;
+    }
+
+    .hidden{
+        display: none;
+    }
+
+
     #menu {
         background: #333;
-        padding: 10px 0;
         font-family: 'Montserrat', sans-serif;
         z-index: 999;
+        padding: 2px 0;
             a {
                 color: #fff !important;
                 font-weight: 500;
@@ -30,6 +41,14 @@ const GlobalStyle = createGlobalStyle`
             }
             a:hover {
                 opacity: 0.6; 
+            }
+
+            .navbar-nav{
+                align-items: center;
+                padding: 5px; 
+            }
+            .logo-menu-mobile{
+                display: none;
             }
     }
 
@@ -49,14 +68,12 @@ const GlobalStyle = createGlobalStyle`
          border-color: #fff;
          background: #fff;
     }
-
-   @media (min-width: 992px){
-        .navbar-expand-lg {
-            flex-flow: column; 
-        }
+    .navbar{ 
+        padding:0;
     }
 
    .btn-padrao {
+        border-radius: 0;
         padding: 10px;
         background: #40739e;
         border: none;
@@ -66,6 +83,21 @@ const GlobalStyle = createGlobalStyle`
                 opacity: 0.8;
             }
     }
+
+    .btn-patrocinio{
+        color: #fff !important;
+        text-transform: uppercase;
+        margin: 80px 0;
+        padding: 20px;
+        :hover{
+            cursor: pointer;
+        }
+    }
+    
+    .btn-inativo{
+        cursor: not-allowed !important;
+    }
+    
 
     .cont{
         padding: 150px 0;
@@ -87,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #programacao{
-        background: url(http://www.dairyvision.com.br/assets/img/schedule-bg-style.png) #fff bottom no-repeat;
+        background: url(${bgProgramacao}) #fff bottom no-repeat;
         background-size: auto auto, cover;
 
         .aba-programacao{
@@ -124,10 +156,6 @@ const GlobalStyle = createGlobalStyle`
             font-size: 1.5rem;
         }
 
-        .menu-programacao{ 
-            margin: 2rem 0 0 0;
-        }
-
         .primeiro-dia{
             background: #008ebc;
          }
@@ -146,7 +174,7 @@ const GlobalStyle = createGlobalStyle`
             color: #5352ed;
         }
 
-        #abas-superiores{
+        #abas-superiores, #abas-inferiores{
             display: flex;
                 h1 {
                     padding: 0;
@@ -155,7 +183,7 @@ const GlobalStyle = createGlobalStyle`
                 }
                 h2 {
                     font-size: 15px;
-                    color: #ddd
+                    color: #fff
                 }
                 span {
                     color: #fff;
@@ -170,18 +198,18 @@ const GlobalStyle = createGlobalStyle`
         .conteudo-programacao{
             padding: 1rem; 
             background: rgba(97, 100, 101, 0.14);
-            margin: 0 0 1.5rem 0;
         }
 
         .item-palestra{ 
             background: #fff;
             padding: 1rem;
-            margin: 1rem 0 1rem 0;
+            margin: 10px 0;
             border-radius: 5px;
         }
 
         .foto-autor{
-            max-width: 50%;
+            max-width: 70%;
+            border-radius: 50%;
         }
 
         .horario-palestra{
@@ -193,12 +221,15 @@ const GlobalStyle = createGlobalStyle`
 
         .titulo-palestra{ 
             font-size: 25px;
-            text-align: justify
+            text-align: justify;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
         .autor-palestra{
             font-size: 1.3rem; 
-            text-align: justify
+            text-align: justify;
+            font-size: 20px;
         }
 
         .item-palestra span{
@@ -229,7 +260,7 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         position: relative;
         bottom: 0;
-        background: url(http://www.agripoint.com.br/imagens/footer-bg.png) bottom no-repeat #333;
+        background: url(${bgRodape}) #333 bottom no-repeat;
         background-size: cover;
         color: #fff;
         padding: 50px 0;
@@ -243,8 +274,12 @@ const GlobalStyle = createGlobalStyle`
                 font-size: 14px;
                 margin: 0;
             }
+            a{
+                color: #fff;
+            }
 
          .form-control {
+            border: none;
             border-radius: 0;
             padding: 1.3rem .75rem;
                 input:focus {
@@ -268,55 +303,69 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-   
-
-    /* slider  */
     .carousel-caption { 
         flex-direction: column;
     }
 
-    .titulo-slider { 
-        text-transform: uppercase;
+    .titulo-slider, .caption-slider{
         font-family: 'Oswald', sans-serif;
-        font-size: 50px;
+        text-transform: uppercase;
+    }
+
+    .titulo-slider { 
+        font-size: 70px;
         font-weight: bold;
         text-shadow: 2px 2px 2px #000;
         margin: 0;
     }
 
     .caption-slider {
-        font-family: 'Oswald', sans-serif;
-         font-size: 25px;
+         font-size: 35px;
          margin: 0;
-         line-height: 20px;
+         line-height: 35px;
+         border: 3px solid;
+         padding: 7px;
     }
+
+    .local-evento, .data-evento{
+        font-size: 23px;
+        color: #fff;
+    }
+
+    .local-evento{
+        margin: 10px 0 5px 0;
+    }
+
+    .data-evento{
+        text-align: left;
+    }
+
+    .fa-map-marker, .fa-calendar{
+        color: #fcc600;
+    }
+
 
     #sobre{
-        background: #008ebc;
-        p{
-            text-align: justify;
-            color: #fff;
-            font-size: 18px;
+        background-image: url(${bgSobre});
+        background-size: cover;
+            .titulo-secao{
+                color: #fff;
+                margin-bottom: 10px;
+                font-size: 28px;
+                text-shadow: 0 1px #333;
+            }
+            .p-40{
+                padding: 0 40px;
+            }
+            p{
+                text-align: justify;
+                color: #fff;
+                font-size: 20px;
+                line-height: 25px;
+            }
         }
-        .titulo-secao{
-            color: #fff;
-        }
+        
     } 
-
-    /* mobile */
-    @media only screen and (min-width: 230px) and (max-width: 767px){
-        #abas-superiores{ flex-direction: column; }
-        .titulo-slider{ font-size: 30px !important }
-        .caption-slider{ font-size: 25px !important }
-        .cont{ padding: 10px 0; }
-        .horario-palestra{ text-align: center; font-size: 1.5rem; margin: 1rem 0 1rem 0;   }
-        .info-secao{ font-size: 100%;}
-        .titulo-palestra{ font-size: 1.5rem;}
-        .autor-palestra{ font-size: 1rem;}
-        .item-palestra{ flex-direction: column;}
-        .foto-autor{ max-width: 100% !important;}
-        .palestra-sem-palestrante{ margin-left: 16px; }
-    }
 
     .btn-circle {
         width: 45px;
@@ -357,12 +406,53 @@ const GlobalStyle = createGlobalStyle`
         justify-content: center;
     }
 
+    .cv-autor {
+            margin: 10px;
+            font-size: 18px;
+    }
+
+    #form-newsletter{
+        padding: 40px 0;
+        background: #333;
+        img{
+            margin: 20px 0;
+        }
+        h2{
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 20px 20px;
+            font-size: 22px;
+        }
+        .form-control {
+            border: none;
+            border-radius: 0;
+            padding: 1.7rem .75rem;
+            
+        }
+
+        .btn-padrao{
+            padding: 15px;
+            text-transform: uppercase;
+        }
+
+        .erro-validacao{
+            color: #ddd;
+        }
+    }    
+
     #palestrantes{ 
-        background: #fff;
+        background: url(${bgPalestrantes} ) #333 top left no-repeat fixed;
+
+        .titulo-secao{
+            color: #fff;
+        }
 
         .card { 
             background-color: transparent !important;
             border: 0;
+            padding: 0;
+            margin: 0;
          }
 
          .palestrante-item {
@@ -373,8 +463,19 @@ const GlobalStyle = createGlobalStyle`
             border-radius: 1rem;
         }
 
+        .nome-palestrante{
+           color: #fff;
+           font-size: 18px;
+        }
+
+        .cargo-palestrante{
+            color: #008ebc;
+            font-size: 15px;
+        }
+
         .palestrante-info { 
             position: absolute;
+            top: 0;
             opacity: 0;
             transition: visibility 0s 0.1s, opacity 0.1s linear;
             height: 100%;
@@ -388,21 +489,19 @@ const GlobalStyle = createGlobalStyle`
          .palestrante-info p{
             text-align: center;
             margin: 0;
-            color: #fff;
-            font-size: 1rem;
             text-transform: uppercase;
             font-weight: bold;
         }
 
         .palestrante-info:hover{
-            background: rgba(51, 51, 51, 0.70);
-            padding: 10px;
+            background: rgba(51, 51, 51, 0.8);
             max-width: 100%;
             height: 100%;
             opacity: 1;
             transition: opacity 0.1s linear;
             cursor: pointer;
             border-radius: 1rem;
+            padding: 1rem;
         }
 
         .palestrante-item {
@@ -447,9 +546,9 @@ const GlobalStyle = createGlobalStyle`
         border: none !important;
     }
 
-    
     #patrocinadores {
-        
+        background: #fff;
+
         .patrocinadores{
              padding: 0 0 2rem 0;
         }
@@ -463,11 +562,11 @@ const GlobalStyle = createGlobalStyle`
             font-size: 2rem;
             text-align: center;
             font-weight: 700;
-            margin: 50px 0 10px 0;
+            margin: 50px 0;
         }
 
         .subtitulo-secao { 
-            margin-bottom: 4rem;
+            margin-bottom: 1rem;
             text-align: center;
             font-size: 20px;
         }
@@ -476,75 +575,127 @@ const GlobalStyle = createGlobalStyle`
             padding: 10px;
             display: flex;
             justify-content: center;
+            border-radius: 5px;
 
             :hover {
-            box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.38);
-            transition: all .1s ease-in-out 0s;
-            border-radius: 10px;
-        }
-       
+                box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.38);
+                transition: all .1s ease-in-out 0s;
+                border-radius: 10px;
+            }
 
         .realizadores { 
             width: 95%;
         }
 
-        .patrocinadores-ouro { 
-            width: 85%;
-        }
-
-        .patrocinadores-prata { 
-            width: 75%;
-        }
-
-        .patrocinadores-bronze{
-            width: 65%;
-        }
-
-        .patrocinadores-apoio{
-            width: 55%; 
-        }
+       
     }
-    
+    .patrocinadores-ouro{ 
+            max-width: 85% !important;
+        }
+
+    .patrocinadores-prata { 
+        max-width: 75%;
+    }
+
+    .patrocinadores-bronze{
+        max-width: 65%;
+    }
+
+    .patrocinadores-apoio{
+        max-width: 55%;
+    }
+        
     }
 
     #inscricoes{
-        background: url(http://www.dairyvision.com.br/assets/img/schedule-bg-style.png) #fff bottom no-repeat;
-        background-size: auto auto,cover;
+        background: #008ebc;
+
+        .titulo-secao{
+            color: #fff;
+            text-shadow: 1px 1px 2px #333;
+        }
+
+        .info-secao{
+            color: #fff;
+        }
+
+        .valorSegundoLote{ 
+            color: #333;
+            font-size: 30px;
+        }
+
+        .form-control{
+            text-transform: uppercase;
+            text-align-last:center;
+            font-size: 17px;
+            margin: 15px 0;
+            background: #fed330;
+            border-radius: 0;
+            height: 50px;
+            color: #333;
+        }
+
+        .desconto{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .itens-inclusos{
+            font-size: 17px;
+            text-align: justify;
+            line-height: 22px;
+            font-family: 'Montserrat',sans-serif;
+            margin-bottom: 10px;
+            padding: 0 5px;
+        }
+
+        .lblSelecao{
+            text-align: center;
+            margin: 10px 0;
+            font-size: 18px;
+        }
     }
 
     .card{
+        background: #fff;
         margin: 2rem 0;
-        padding: 50px 30px;
-        border-radius: 5px;
-        border: 2px solid #ddd;
+        padding: 20px 10px;
+        border-radius: 10px;
         align-items: center;
     }
     .lote{ 
-        font-size: 2rem;
+        font-size: 35px;
         text-transform: uppercase;
-        margin-bottom: 0;
+        margin: 10px 0 0 0;
         font-weight: 700;
         text-align: center;
+        color: #333;
     }
     .vencimento-lote{ 
         text-align: center;
+        color: #333;
+        margin: 0 0 20px 0;
+            font-size: 18px;
     }
     
     .evento{ 
-        font-size: 1.6rem;
+        font-size: 20px;
         text-transform: uppercase;
         font-weight: bold;
         text-align: center;
+        color: #333;
      }
 
     .btn-tipo-ingresso{ 
         padding: 0.8rem 0;
         margin-right: 0.5rem;
-        background: #333;
-        color: #fff !important;
+        background: #fed330;
+        color: #333;
         width: 100%;
+        border-radius: 0;
             :hover{
-                background: #007bff;
+                background: #333;
+                color: #fff !important;
                 transition: 0.5s;
                 cursor: pointer;
             }
@@ -569,20 +720,31 @@ const GlobalStyle = createGlobalStyle`
     .valor-ingresso{ 
         display: flex;
         justify-content: space-around;
+        margin: 20px 0;
             p{ 
                 margin: 0.5rem 0;
-                font-size: 1.8rem; font-weight: 700;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #333;
             }
             .rs{ 
-                font-size: 1rem;
+                font-size: 20px;
                 color: #2196F3;
                 font-weight: bolder;
+            }
+            span{
+                font-size: 32px;
+                color: #333;
             }
     }
 
     .tipo-ingresso{ 
         display: flex;
         justify-content: space-between;
+    }
+    
+    .react-multi-carousel-list {
+        border-top: 4px solid #333;
     }
 
     #form-contato{
@@ -592,9 +754,62 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-    .react-multi-carousel-list {
-        border-top: 4px solid #333;
-   
+    #politica-cancelamento{
+        background: #fff;
+        p{
+            font-size: 22px;
+            text-align: justify;
+         }
+         .fa{
+             font-size: 50px; color: #333;
+         }
+         a{
+             color: #333;
+         }
+    }
+
+    /* mobile */
+    @media only screen and (min-width: 230px) and (max-width: 990px){
+        #abas-superiores, #abas-inferiores{ flex-direction: column;}
+        #rodape p{ text-align:center; }
+        #menu img{ margin: 10px; }
+        #form-newsletter h2 { font-size: 20px;}
+        #sobre{ 
+            background: #158ebd;
+            .titulo-secao {
+                font-size: 23px;
+                margin: 20px 0;
+            }
+            p{
+                font-size: 20px;
+            }
+            
+        }
+        html { scroll-behavior:initial; } 
+        #menu .navbar-nav{ align-items: flex-start; padding: 0; }
+        #menu .logo-menu{ display: none; }
+        #menu .logo-menu-mobile{ display: flex; justify-content: flex-start; }
+        #menu img{ max-width: 70%; }
+        .local-evento, .data-evento{ font-size:15px; }
+        .titulo-slider{ font-size:25px !important; margin-top:50px; }
+        .titulo-painel{ font-size:20px !important; }
+        .caption-slider{ font-size:20px !important; line-height:20px; }
+        .cont{ padding:110px 0 30px 0; }
+        .horario-palestra{ text-align:center !important; font-size:1.5rem; margin: 1rem 0 1rem 0;   }
+        .info-secao{ font-size: 100%;}
+        .titulo-palestra{ text-align:center !important; font-size: 20px !important;}
+        .autor-palestra{ text-align:center !important; font-size: 18px !important;}
+        .item-palestra{ flex-direction:column;}
+        .foto-autor{ max-width:100% !important;}
+        .palestra-sem-palestrante{ margin-left:16px; }
+        .horario-palestra{ margin:1rem 0 0rem 0 !important;}
+        .caption-slider{ display:none; }
+        .cv-autor{ font-size: 15px; }
+        .modal-body { padding: 0 !important;} 
+        .nome-palestrante{ font-size: 15px; }
+        .descricao-palestrante{ font-size: 15px; }
+        .itens-inclusos{ margin-bottom: 0;}
+        .valor-ingresso{ margin: 0;}
     }
 `
 export default GlobalStyle;
